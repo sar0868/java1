@@ -2,8 +2,12 @@ package lesson3.homework;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class HomeWork {
+
+    public static Scanner sc = new Scanner(System.in);
+
 
     /* example:
      * input: Mama mila ramu, Ramu mila mama!!!, [mama, ramu]
@@ -56,16 +60,34 @@ public class HomeWork {
         return false;
     }
 
-    public void binarySearchGame() {
+    public static void binarySearchGame() {
         int secretValue = new Random().nextInt(100); // компьютер загадывает число
         // TODO: 20.01.2020
         //мы печатаем в консоль наши предположения (в цикле), компютер отвечает > , < или =
         //на каждый наш вопрос
         //если задано более 7 вопросов и не угадано значение, мы проиграли
         //если компютер вывел =, мы выиграли
+        System.out.println("Угадайте число от 0 до 100.");
+        for (int i = 0; i < 7; i++) {
+//            System.out.println("Введите число:");
+            int inp = sc.nextInt();
+            if (inp == secretValue){
+                System.out.println("=");
+                break;
+            } else if (inp < secretValue){
+                System.out.println("<");
+            } else {
+                System.out.println(">");
+            }
+        }
+
     }
 
     public void wordsGame() {
         // TODO: 20.01.2020  
+    }
+
+    public static void main(String[] args) {
+        binarySearchGame();
     }
 }
