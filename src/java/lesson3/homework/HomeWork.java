@@ -18,7 +18,18 @@ public class HomeWork {
         //посчитать все слова из словаря в input
         //если одно слово встречается 5 раз его нужно посчитать 5 раз
         // TODO: 1/21/2020
-        return 0;
+
+        int result = 0;
+        String[] arrInp = input.split("/s+");
+        for (String dict: dictionary) {
+            for (String arrInp1: arrInp) {
+                if(arrInp1.equals(dict)){
+                    result++;
+                }
+            }
+
+        }
+        return result;
     }
 
     /* example:
@@ -89,5 +100,8 @@ public class HomeWork {
 
     public static void main(String[] args) {
         binarySearchGame();
+        String str = "Mama mila ramu, Ramu mila mama!!!";
+
+
     }
 }
