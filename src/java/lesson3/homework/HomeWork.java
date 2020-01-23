@@ -20,10 +20,11 @@ public class HomeWork {
         // TODO: 1/21/2020
 
         int result = 0;
-        String[] arrInp = input.split("/s+");
+        input = input.replaceAll("(\\w/_/\\d)+", " ");
+        String[] arrInp = input.split("\\s+");
         for (String dict: dictionary) {
             for (String arrInp1: arrInp) {
-                if(arrInp1.equals(dict)){
+                if(arrInp1.toLowerCase().matches(dict.toLowerCase())){
                     result++;
                 }
             }
