@@ -68,7 +68,7 @@ public class HomeWork {
     public static Person [] createFivePerson() {
         // TODO: 28.01.2020
         for (int i = 0; i < 5; i++) {
-
+// ввести данные из файла
         }
 
 
