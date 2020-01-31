@@ -70,26 +70,31 @@ public class HomeWork {
     public static Person[] createFivePerson() throws FileNotFoundException {
         // TODO: 28.01.2020
         Person[] result = new Person[5];
-
-        String[] data = new Scanner(new File("persons.txt")).nextLine().split("\n");
+        Scanner data = new Scanner(new File("persons.txt"));
         for (int i = 0; i < 5; i++) {
-            String[] data1 = data[i].split(", ");
-            System.out.println(Arrays.toString(data1));
-//            Person person = new Person(data1[0], data1[1], data1[2], data1[3],
-//                    Integer.parseInt(data1[4]), Integer.parseInt(data1[5]));
-//            result[i] = person;
+            String[] persons = data.nextLine().split(", ");
+            Person person = new Person(persons[0], persons[1], persons[2], persons[3],
+                    Integer.parseInt(persons[4]), Integer.parseInt(persons[5]));
+            result[i] = person;
         }
         return result;
     }
 
-    public ArrayList<Person> filterBiggerThan40(Person[] people) {
-        // TODO: 28.01.2020  
-        return null;
+    public static ArrayList<Person> filterBiggerThan40(Person[] people) {
+        // TODO: 28.01.2020
+        ArrayList<Person> old40 = new ArrayList<>();
+        for (Person men: people) {
+            if(men.getAge() > 40){
+                old40.add(men);
+            }
+        }
+        return old40;
     }
 
-    public static void main(String[] args) {
-
-//        Person pers = new Person("Ivan Ivanov", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30);
-//        System.out.println(pers);
-    }
+//    public static void main(String[] args) {
+//
+//
+////        Person pers = new Person("Ivan Ivanov", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30);
+////        System.out.println(pers);
+//    }
 }
