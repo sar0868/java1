@@ -91,7 +91,7 @@ public class HomeWork {
         return old40;
     }
 
-//    public static void main(String[] args) {
+    //    public static void main(String[] args) {
 //
 //
 ////        Person pers = new Person("Ivan Ivanov", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30);
