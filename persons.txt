@@ -1,0 +1,5 @@
+Ivan Ivanov, Engineer, ivivan@mailbox.com, 892312312, 30000, 30
+Sergey Petrov, Menager, spetrov@sss.com, 89211234521, 40000, 40
+Nina Alekseeva, Accaunter, glbuh@sss.com, 89003456745, 40000, 45
+Petr Chehov, Engineer, pchehov@sss.com, 892312311, 30000, 47
+Nataliya Ten, Engineer, nten@sss.com, 892312310, 30000, 28
