@@ -3,45 +3,50 @@ package lesson2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class IfCase {
     public static void main(String[] args) throws IOException {
-        int a = 4, b = 4;
-        if (a > 3 || ++b < 10) {}
-        //System.out.println(a + " " + b);
-        //input data case 0
-        //a = System.in.read();
-        //System.out.println((char) a);
-        //input data case 1
-//        Scanner in = new Scanner(System.in);
-//        String s1 = in.nextLine();
-//        String [] words = s1.split(" ");
-//        System.out.println(Arrays.toString(words));
-//        while (in.hasNext()) {
-//            System.out.println(in.next());
+        Scanner in = new Scanner(System.in);
+       // System.out.print("Введите катеты a = ");
+        double a = in.nextInt();
+        //System.out.print("b = ");
+        double b = in.nextInt();
+        //System.out.print("Введите координаты точки: x = ");
+        double x = in.nextDouble();
+        //System.out.print("y = ");
+        double y = in.nextDouble();
+//        switch (value) {
+//            case 0:
+//                System.out.println("Ноль");
+//                break;
+//            case 1:
+//                System.out.println("Один");
+//                break;
+//            default:
+//                System.out.println("Другая цифра");
 //        }
-        //input case 2
+
+//        //124 5125 12 5 3616 36 3 6sd g,s.d ,gh sdh. dfgj
+//        //' ', '\n'
 //        BufferedReader br = new BufferedReader(
 //                new InputStreamReader(System.in)
 //        );
-//        int val = Integer.parseInt(br.readLine());
-//        System.out.println(val);
-        String name = "Иван";
-        int age = 30;
-        //%s - str, %d - int, long, %f - double, %c - char
-        System.out.printf("%sу %d лет\n", name, age);
-        int value = 0;
-        switch (value) {
-            case 0:
-                System.out.println("ZERO");
-                break;
-            case 1:
-                System.out.println("ONE");
-                break;
-            default:
-                System.out.println("other");
-        }
+//        //alt + enter
+//        int a = Integer.parseInt(br.readLine());
+//        System.out.println(a > b ? a : b);
+//        if (a > b) {
+//            System.out.println(a);
+//        } else {
+//            System.out.println(b);
+//        }
+//        if (x >= 0 && y >= 0 && y <= - (a / b) * x + a) {
+//            System.out.println("Точка внутри треугольника");
+//        } else {
+//            System.out.println("Точка снаружи треугольника");
+//        }
+
     }
 }
