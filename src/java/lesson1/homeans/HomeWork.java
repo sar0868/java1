@@ -34,7 +34,7 @@ public class HomeWork {
 
     //ctrl + k
     public boolean isLeapYear(int year) {
-        if ((year & 3) != 0) {
+        if ((year & 3) != 0) { //year % 4 != 0
             return false;
         }
         return (year % 100 != 0) || (year % 400 == 0);

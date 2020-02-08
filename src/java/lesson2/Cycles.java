@@ -7,145 +7,161 @@ import java.util.Scanner;
 
 public class Cycles {
 
-    static void printN(char c, int n) {
-        while (n-- > 0) System.out.print(c);
-    }
-
-    static void whileCycle() {
-        //пока выполняется условие { делать это }
-        int n = 5;
-        while (n > 0) {
-            System.out.println("n = " + n);
-            n--;
+    static void printNA(int n) {
+        //print n 'A'
+        int i = 0;
+        while (i++ < n) {
+            System.out.print('A');
         }
-        n = 5;
-        //[][][][][]
-        while (n-- > 0) System.out.print("[]");
-        System.out.println();
-        n = 0;
-        //[][[]][[[]]][[[[]]]][[[[[]]]]]
-        while (n < 5) {
-            printN('[', n + 1);
-            printN(']', n + 1);
-            n++;
-        }
-        System.out.println();
-        //multiply table 9 * 9
-        int i = 1, j = 1;
-        while (i < 10) {
-            j = 1;
-            while (j < 10) {
-                System.out.printf("%3d |", i * j);
-                j++;
-            }
-            System.out.println();
-            i++;
+        while (n-- > 0) {
+            System.out.print('A');
         }
     }
 
-    static void forCycle() {
-        for (int i = 1; i < 6; i++) {
-            System.out.println("n = " + i);
-        }
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 0; j < i; j++) {
-                System.out.print('[');
-            }
-            for (int j = 0; j < i; j++) {
-                System.out.print(']');
-            }
+    static void printAllPow2(int limit) {
+        int first = 1, counter = 0;
+        while (counter++ <= limit) {
+            System.out.print(first + " ");
+            first *= 2;
         }
         System.out.println();
-        for (int i = 1; i < 10; i++) {
-            for (int j = 1; j < 10; j++) {
-                System.out.printf("%3d ", i * j);
+        for (int i = 0, f = 1; i <= limit; i++, f *= 2) {
+            System.out.print(f + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+        }
+    }
+
+    //()(())((())) = f(3), f(2) = ()(()), f(1) = ()
+    //f1(7) = ()(())(
+    static void f(int n) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print('(');
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.print(')');
+            }
+        }
+    }
+
+    static void f1(int limit) {
+        int counter = 0;
+        boolean isRunning = true;
+        for (int i = 1; isRunning; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print('(');
+                counter++;
+                if (counter == limit) {
+                    isRunning = false;
+                    break;
+                }
+            }
+            for (int j = 0; isRunning && j < i; j++) {
+                System.out.print(')');
+                counter++;
+                if (counter == limit) {
+                    isRunning = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    static void multiplyTable(int x, int y) {
+        for (int i = 1; i <= x; i++) { //1 2 3
+            for (int j = 1; j <= y; j++) {//1 2 3 .. y
+                System.out.printf("%3d", i * j);
             }
             System.out.println();
         }
-        int a = 3, b = 7, c = 12;
-        //1 2 4 8 16 ....
-//        for (int i = 1, cnt = 0; cnt < 50; i <<= 1, cnt++) {
-//            System.out.print(i + " ");
-//            if (cnt % 10 == 0) System.out.println();
+    }
+
+    static void calc(double sum, double percent, double pay) {
+        double startSum = sum, startPay = 0;
+        int mounth = 1;
+        while (true) {
+            sum = sum * (1 + percent / 100) - pay;
+            startPay += pay;
+            if (sum <= 0) {
+                startPay += sum;
+                System.out.println("Вы выплатили за " + mounth + " месяцев или "
+                        + mounth / 12 + " лет и " + mounth % 12 + " месяцев");
+                System.out.println("Вы переплатили: " + (startPay - startSum) + " рублей!");
+                return;
+            }
+            if (mounth > 600) {
+                System.out.println("Вы погибли");
+                return;
+            }
+            mounth++;
+        }
+    }
+
+    //Arrays
+    static void positiveSum(int[] array) {
+//        int pos = -1;
+//        for (int i = 0; i < array.length; i++) {
+//            System.out.print(array[i] + " ");
 //        }
-        for (int i = 1; i < 10000; i <<= 1) {
-            System.out.print(i + " ");
+//        System.out.println();
+        int sum = 0;
+        for (int element : array) {
+            if (element > 0) sum += element;
         }
-        System.out.println();
-        for (int i = 1, cnt = 1; i < 100; i += cnt, cnt++) {
-            System.out.println(i);
+        System.out.println(sum);
+//        Arrays.stream(array)
+//                .map(arg -> arg + 2)
+//                .filter(x -> x >= 0)
+//                .sorted()
+//                .forEach(consumer -> System.out.print(consumer + " "));
+    }
+
+    static int[] createArray(int len, int fillValue) {
+        int [] a = new int[len];
+        Arrays.fill(a, fillValue);
+        return a;
+    }
+
+    static int [][] deepArray(int len) {
+        Random rnd = new Random();
+        int [][] a = new int[len][];
+        for (int i = 0; i < len; i++) {
+            a[i] = new int[1 + rnd.nextInt(10)];
+        }
+        return a;
+    }
+
+    //000    101
+    //000 -> 010
+    //000    101
+    static void fillDiag(int [][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i][i] = 1;
+            matrix[i][matrix.length-i-1] = 1;
         }
     }
 
-    static void arrays() {
-        int[] a = new int[]{3, 4, 5, 6, 7};
-        System.out.println(Arrays.toString(a));
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
-        }
-        System.out.println();
-        for (int i : a) {
-            System.out.print(i + " ");
-        }
-        //0,1,2,3,4,2,1,0
-        //out: max array value,
-        //and index of this value
-        //impl1 O(N) depend by array length
-        int[] mou = new int[]{0, 12, 3, 2, 0};
-        //int n = new Scanner(System.in).nextInt();
-        //int [] ar = new int[n];
-        //System.out.println(ar.length);
-        int peek = -1, index = -1;
-        int timeDifficult = 0;
-        for (int i = 0; i < mou.length; i++) {
-            timeDifficult++;
-            if (mou[i] > peek) {
-                peek = mou[i];
-                index = i;
-            }
-        }
-        System.out.println();
-        System.out.println("Processed by " + timeDifficult + " iteration");
-        System.out.println("Peek height - " + peek + " at index = " + index);
-        //impl2 O(logN)
-        int l = 0, r = mou.length - 1;
-        timeDifficult = 0;
-        while (r - l != 3) {
-            timeDifficult++;
-            int m = (l + r) / 2;
-            if (mou[m] > mou[m - 1]) {
-                l = m - 1;
-            } else r = m + 1;
-        }
-        System.out.println("Processed by " + timeDifficult + " iteration");
-        System.out.println("Peek height - " + mou[l + 1] + " at index = " + (l + 1));
-
-    }
-
-    static void deepArrays() {
-        int [][] a = new int[3][4];
-        System.out.println(a);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 4; j++) {
-                a[i][j] = i * j;
-                System.out.printf("%3d", a[i][j]);
-            }
-            System.out.println();
-        }
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.printf("%3d", a[j][i]);
-            }
-            System.out.println();
-        }
-        int [][] ar = new int[3][];
-        for (int i = 0; i < 3; i++) {
-            ar[i] = new int[new Random().nextInt(10)];
-        }
-        System.out.println(Arrays.deepToString(ar));
-    }
+    //0 0 1 0 0
+    //0 1 1 1 0
+    //1 1 1 1 1
+    //0 1 1 1 0
+    //0 0 1 0 0
 
     public static void main(String[] args) {
-        deepArrays();
+        positiveSum(new int[]{1, 2, 3, -40, 5, -60, 7, 8});
+        System.out.println(Arrays.toString(createArray(5, 7)));
+        System.out.println(Arrays.deepToString(deepArray(5)));
+        System.out.println(deepArray(7));
+        int [][] m = new int[3][3];
+        fillDiag(m);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(m[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
